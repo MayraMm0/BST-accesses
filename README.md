@@ -12,12 +12,13 @@ Value: IP address
 The program must identify the top 5 IPs with the highest number of accesses, which is useful for detecting potential attacks or anomalous network behavior.
 
 **Input**
+```
 The program receives a text file with logs sorted by IP in the following format:
 Oct 9 10:32:24 423.2.230.77:6166 Failed password for illegal user guest
 Oct 9 10:33:15 423.2.230.77:6166 Failed password for illegal user admin
 Oct 9 11:45:02 192.168.1.100:5500 Accepted password for user john
-
-```This file is the result of the **previous Integrative Activity**.```
+```
+This file is the result of the **previous Integrative Activity**.
 
 ## Functionality
 
@@ -52,12 +53,13 @@ Valor: Dirección IP
 El programa debe identificar las 5 IPs con mayor cantidad de accesos, lo cual es útil para detectar posibles ataques o comportamientos anómalos en la red.
 
 **Entrada**
+```
 El programa recibe un archivo de texto con logs ordenados por IP en el siguiente formato:
 Oct 9 10:32:24 423.2.230.77:6166 Failed password for illegal user guest
 Oct 9 10:33:15 423.2.230.77:6166 Failed password for illegal user admin
 Oct 9 11:45:02 192.168.1.100:5500 Accepted password for user john
-
-```Este archivo es el resultado de la **Actividad Integradora anterior**.```
+```
+Este archivo es el resultado de la **Actividad Integradora anterior**
 
 ## Funcionalidad
 
