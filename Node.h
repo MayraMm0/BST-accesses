@@ -1,30 +1,13 @@
 #pragma once
-#include <iostream>
 
-template <typename T>
-struct Node{
+template<typename T>
+struct Node {
     T value;
-    Node* left;
-    Node* right;
-    int height;
-    Node<T>* parentNode;
+    Node<T>* left;
+    Node<T>* right;
+    Node<T>* parent;
 
-    Node(T value){
-        this-> value = value;
-        left = nullptr;
-        right = nullptr;
-        height = 0;
-        parentNode = nullptr;
-    }
-
-    Node<T>* get_parent() {
-        return parentNode;
-    }
-
-    int get_height() {
-        return height;
-    }
-
+    Node(const T& val) : value(val), left(nullptr), right(nullptr), parent(nullptr) {}
 };
 
 template<typename Q>
