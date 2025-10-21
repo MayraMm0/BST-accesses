@@ -2,25 +2,26 @@
 
 template<typename T>
 struct Node {
-    T value;
+    T IP;
+    int accesses;
     Node<T>* left;
     Node<T>* right;
     Node<T>* parent;
 
-    Node(const T& val) : value(val), left(nullptr), right(nullptr), parent(nullptr) {}
+    Node(const T& ip) : IP(ip), left(nullptr), right(nullptr), parent(nullptr) {}
 };
 
 template<typename Q>
 std::ostream& operator<<(std::ostream& os, const Node<Q>& n){
     // Inicia con el valor del nodo y el paréntesis
-    os << n.value << " (" ;
+    os << n.IP << " (" ;
 
     // 1. Imprimir ParentNode:
     os << "P:"; // Etiqueta opcional para claridad
     if (!n.parentNode)
         os << "nullptr";
     else
-        os << n.parentNode->value;
+        os << n.parentNode->IP;
 
     os << ", L:"; // Separador y etiqueta para Left
 
@@ -28,7 +29,7 @@ std::ostream& operator<<(std::ostream& os, const Node<Q>& n){
     if (n.left == nullptr)
         os << "nullptr";
     else
-        os << n.left->value;
+        os << n.left->IP;
 
     os << ", R:"; // Separador y etiqueta para Right
 
@@ -36,7 +37,7 @@ std::ostream& operator<<(std::ostream& os, const Node<Q>& n){
     if (n.right == nullptr)
         os << "nullptr";
     else
-        os << n.right->value;
+        os << n.right->IP;
 
     // 4. Imprimir Altura y cerrar paréntesis
     os <<", H:" << n.height << ")";

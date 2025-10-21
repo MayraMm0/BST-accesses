@@ -109,13 +109,13 @@ private:
     }
 
     // BUSCAR O(log n)
-    Node<T>* findNode(const T& value){
+    Node<T>* findNode(const T& IP){
         Node<T>* current = root;
 
         while (current != nullptr) {
-            if (value < current->value) {
+            if (IP < current->IP) {
                 current = current->left;
-            } else if (value > current->value) {
+            } else if (IP > current->IP) {
                 current = current->right;
             } else {
                 return current; // Cuando lo encuentra (valores iguales)
@@ -149,8 +149,8 @@ public:
 
     // --- OPERACIONES PRINCIPALES ---
     // INSERTAR O(log n)
-    void insert(const T& value){
-        Node<T>* newNode = new Node<T>(value);
+    void insert(const T& IP){
+        Node<T>* newNode = new Node<T>(IP);
 
         if (root == nullptr) {
             root = newNode;
@@ -164,9 +164,9 @@ public:
         // Encuentra punto de inserción para que el árbol mantenga la propiedad BST y sea complete
         while (current != nullptr) {
             parent = current;
-            if (value < current->value) {
+            if (IP < current->IP) {
                 current = current->left;
-            } else if (value > current->value) {
+            } else if (IP > current->IP) {
                 current = current->right;
             } else {
                 // Si ya existe, no inserta duplicados pero hace splay
@@ -178,7 +178,7 @@ public:
 
         // Inserta nuevo nodo
         newNode->parent = parent;
-        if (value < parent->value) {
+        if (IP < parent->IP) {
             parent->left = newNode;
         } else {
             parent->right = newNode;
@@ -189,12 +189,12 @@ public:
     }
 
     // BUSCAR O(log n)
-    bool find(const T& value) {
+    bool find(const T& IP) {
         Node<T>* node = root;
         while (node != nullptr) {
-            if (value < node->value) {
+            if (IP < node->IP) {
                 node = node->left;
-            } else if (value > node->value) {
+            } else if (IP > node->IP) {
                 node = node->right;
             } else {
                 splay(node);
@@ -206,8 +206,8 @@ public:
 
 
     // ELIMINAR O(log n)
-    bool remove(const T& value){
-        Node<T>* node = findNode(value);
+    bool remove(const T& IP){
+        Node<T>* node = findNode(IP);
 
         if (node == nullptr) {
             return false; // No se encontró
@@ -254,7 +254,7 @@ public:
     void inOrderTraversal(Node<T>* node) const {
         if (node != nullptr) {
             inOrderTraversal(node->left);
-            std::cout << node->value << " ";
+            std::cout << node->IP << " ";
             inOrderTraversal(node->right);
         }
     }
@@ -290,7 +290,7 @@ public:
             if (!first) {
                 os << ", ";
             }
-            os << current->value;
+            os << current->IP;
             first = false;
 
             // Añade hijos no nulos a la cola
