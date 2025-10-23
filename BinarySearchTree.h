@@ -50,22 +50,18 @@ public:
     }
 
     // ------ FUNCIÓN PARA INSERTAR O(log n) ------
-    bool insert(T value){
+    void insert(T value){
         Node<T>* newNode = new Node(value);
 
         if (root == nullptr){ // Si el árbol está vacío
             root = newNode;   // Solo se añade la raíz
-            return true;
+            return;
         }
 
         Node<T>* temp = root;
         Node<T>* parent = nullptr; // ancestro de current
 
         while(true){
-            if(newNode->value == temp->value){
-                delete newNode;
-                return false; //Si ya hay uno con ese valor no se inserta
-            }
             parent = temp;
 
             if(newNode->value < temp->value){
@@ -74,7 +70,7 @@ public:
                     newNode->parentNode = parent;
 
                     update_ancestor_heights(parent); // Actualiza alturas
-                    return true;
+                    return;
                 }
                 temp = temp->left; // Si había nodo, pasa al siguiente y vuelve a comparar
             } else {
@@ -83,7 +79,7 @@ public:
                     newNode->parentNode = parent;
 
                     update_ancestor_heights(parent); // Actualiza alturas
-                    return true;
+                    return;
                 }
                 temp = temp->right; // Si había nodo, pasa al siguiente y vuelve a comparar
             }
