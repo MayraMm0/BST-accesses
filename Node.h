@@ -1,27 +1,43 @@
 #pragma once
+#include <iostream>
 
-template<typename T>
-struct Node {
-    T IP;
-    int accesses;
-    Node<T>* left;
-    Node<T>* right;
-    Node<T>* parent;
+template <typename T>
+struct Node{
+    T value;
+    Node* left;
+    Node* right;
+    int height;
+    Node<T>* parentNode;
 
-    Node(const T& ip) : IP(ip), left(nullptr), right(nullptr), parent(nullptr) {}
+    Node(T value){
+        this-> value = value;
+        left = nullptr;
+        right = nullptr;
+        height = 0;
+        parentNode = nullptr;
+    }
+
+    Node<T>* get_parent() {
+        return parentNode;
+    }
+
+    int get_height() {
+        return height;
+    }
+
 };
 
 template<typename Q>
 std::ostream& operator<<(std::ostream& os, const Node<Q>& n){
     // Inicia con el valor del nodo y el paréntesis
-    os << n.IP << " (" ;
+    os << n.value << " (" ;
 
     // 1. Imprimir ParentNode:
     os << "P:"; // Etiqueta opcional para claridad
     if (!n.parentNode)
         os << "nullptr";
     else
-        os << n.parentNode->IP;
+        os << n.parentNode->value;
 
     os << ", L:"; // Separador y etiqueta para Left
 
@@ -29,7 +45,7 @@ std::ostream& operator<<(std::ostream& os, const Node<Q>& n){
     if (n.left == nullptr)
         os << "nullptr";
     else
-        os << n.left->IP;
+        os << n.left->value;
 
     os << ", R:"; // Separador y etiqueta para Right
 
@@ -37,7 +53,7 @@ std::ostream& operator<<(std::ostream& os, const Node<Q>& n){
     if (n.right == nullptr)
         os << "nullptr";
     else
-        os << n.right->IP;
+        os << n.right->value;
 
     // 4. Imprimir Altura y cerrar paréntesis
     os <<", H:" << n.height << ")";

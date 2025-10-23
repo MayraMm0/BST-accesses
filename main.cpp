@@ -4,11 +4,11 @@
 // Act 3.4 - Actividad Integral de BST (Evidencia Competencia)
 
 #include <iostream>
-#include "SplayTree.h"
+#include "BinarySearchTree.h"
 using namespace std;
 
 int main() {
-    SplayTree<int> tree;
+    BinarySearchTree<int> tree;
 
     // Test Tree
     tree.insert(10);
