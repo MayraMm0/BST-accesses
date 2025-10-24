@@ -86,10 +86,18 @@ void LogManager::processLogFile(const std::string& filename) {
 
 /*
  * Encuentra y muestra las K IP's con mayor número de accesos.
+ * Complejidad: O(k + h), donde k es el número de elementos a mostrar y h es la altura del árbol.
  */
-void LogManager::findTopK(int k) const {
-    // ... Lógica de recorrido In-Orden Inverso para Top K ...
+void LogManager::findTopK(int k) {
+    if (k <= 0){
+        cout << "El valor de k debe ser positivo" <<endl;
+        return;
+    }
     
     cout << "\n3. Buscando las " << k << " IPs con más accesos (Top " << k << ")..." << endl;
-    cout << "   -> Esta operación requiere un método de recorrido In-Orden Inverso en BinarySearchTree.h." << endl;
+    // El BST está ordenado por frecuencia (AccessRecord::accessCount).
+    // Llamamos al metodo ReverseInOrder, que recorrerá el árbol
+    // de MAYOR a MENOR frecuencia y se detendrá al encontrar K elementos.
+    frequencyBST.ReverseInOrder(k);
+    cout << "Búsqueda finalizada" << endl;
 }

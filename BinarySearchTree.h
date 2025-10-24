@@ -167,28 +167,35 @@ public:
     }
 
     // Inorder
-    void InOrder(){
+    void ReverseInOrder(int k){
         stack<Node<T>*> stk;
         Node<T>* curr = root;
+        int count = 0; // Contador para controlar el Top K
 
         while (curr != nullptr || stk.empty() == false) {
 
-            // Vamos al leftmost
+            // Vamos al nodo más a la derecha
             while (curr != nullptr) {
-
-                // Vamos añadiendo los izquierdos
+                // Vamos añadiendo los derechos
                 stk.push(curr);
-                curr = curr->left;
+                curr = curr->right;
             }
 
-            // Current ya es null
+            // Current ya es null (llegamos a rightmost)
             curr = stk.top();
             stk.pop();
-            cout << curr->value << " ";
 
-            // Ya visitamos el nodo y su left
-            // Pasamos a la derecha
-            curr = curr->right;
+            if (count < k){
+                cout <<"Accesos: " <<curr->value.accessCount << " ";
+                cout << ", IP: " << curr->value.ipAddress.original() << endl;
+                ++count;
+            } else{
+                // Si ya encontramos los K elementos, salimos del bucle
+                return;
+            }
+
+            // Pasamos a la izquierda
+            curr = curr->left;
         }
     }
 

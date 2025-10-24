@@ -4,20 +4,33 @@
 // Act 3.4 - Actividad Integral de BST (Evidencia Competencia)
 
 #include <iostream>
-#include "BinarySearchTree.h"
+#include <string>
+#include "LogManager.h" // Incluye la clase controladora
+
 using namespace std;
 
-int main() {
-    BinarySearchTree<int> tree;
+// Nombre del archivo de bitácora
+const string FILENAME = "bitacora_ordenada.txt";
+// Constante para el requerimiento del Top 5
+const int TOP_K = 5;
 
-    // Test Tree
-    tree.insert(10);
-    tree.insert(5);
-    tree.insert(20);
-    tree.insert(3);
-    tree.insert(7);
-    tree.insert(15);
-    tree.insert(25);
+int main() {
+
+    // 1. Crear una instancia de LogManager
+    LogManager manager;
+
+    try {
+        // 2. Procesar el archivo: Contar frecuencias y construir el BST
+        manager.processLogFile(FILENAME);
+
+        // 3. Encontrar y mostrar las K IPs con más accesos
+        // Esta llamada utilizará el método ReverseInOrder que modificaste.
+        manager.findTopK(TOP_K);
+
+    } catch (const std::exception& e) {
+        cerr << "\nOcurrió un error crítico: " << e.what() << endl;
+        return 1;
+    }
 
     return 0;
 }

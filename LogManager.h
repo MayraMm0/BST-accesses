@@ -24,5 +24,5 @@ public:
     /*
     Metodo para encontrar y mostrar el Top K de IP's.
     */
-    void findTopK(int k) const;
+    void findTopK(int k);
 };
